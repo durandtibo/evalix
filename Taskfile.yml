@@ -1,0 +1,38 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  NAME: evalix
+  SOURCE: src/{{.NAME}}
+  TESTS: tests
+  UNIT_TESTS: tests/unit
+  INTEGRATION_TESTS: tests/integration
+
+tasks:
+  default:
+    cmds:
+      - uv venv
+      - source .venv/bin/activate
+      - uv python list --only-installed
+      - uv python find
+    silent: true
+
+  update:
+    cmds:
+      - uv sync --upgrade --all-extras
+      - uv tool upgrade --all
+      - pre-commit autoupdate
+
+  install-all:
+    cmds:
+      - uv pip install -r pyproject.toml --all-extras --group dev
+      - uv pip install -e .
+
+  unit-test:
+    cmds:
+      - python -m pytest --xdoctest --timeout 10 {{.UNIT_TESTS}}
+
+  unit-test-cov:
+    cmds:
+      - python -m pytest --xdoctest --timeout 10 --cov-report html --cov-report xml --cov-report term --cov={{.NAME}} {{.UNIT_TESTS}}
