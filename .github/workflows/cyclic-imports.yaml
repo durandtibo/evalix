@@ -1,0 +1,80 @@
+name: Cyclic Imports
+on:
+  workflow_call:
+  workflow_dispatch:  # to trigger manually
+
+jobs:
+  cyclic-import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Set environment variable
+        run: |
+          echo $(poetry run poetry env info --path)/bin >> $GITHUB_PATH
+
+      - name: Install packages
+        run: |
+          make install-all
+
+      - name: Show installed packages
+        run: |
+          poetry show
+          poetry show --tree
+
+      - name: check evalix
+        run: |
+          python -c "import evalix"
+
+      - name: check evalix.analyzer
+        run: |
+          python -c "from evalix import analyzer"
+      - name: check evalix.content
+        run: |
+          python -c "from evalix import content"
+      - name: check evalix.evaluator
+        run: |
+          python -c "from evalix import evaluator"
+      - name: check evalix.evaluator2
+        run: |
+          python -c "from evalix import evaluator2"
+      - name: check evalix.metric
+        run: |
+          python -c "from evalix import metric"
+      - name: check evalix.output
+        run: |
+          python -c "from evalix import output"
+      - name: check evalix.plot
+        run: |
+          python -c "from evalix import plot"
+      - name: check evalix.plotter
+        run: |
+          python -c "from evalix import plotter"
+      - name: check evalix.reporter
+        run: |
+          python -c "from evalix import reporter"
+      - name: check evalix.result
+        run: |
+          python -c "from evalix import result"
+      - name: check evalix.runner
+        run: |
+          python -c "from evalix import runner"
+      - name: check evalix.section
+        run: |
+          python -c "from evalix import section"
+      - name: check evalix.state
+        run: |
+          python -c "from evalix import state"
+      - name: check evalix.utils
+        run: |
+          python -c "from evalix import utils"
