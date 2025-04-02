@@ -26,7 +26,7 @@ jobs:
 
       - name: debug
         run: |
-          ls -lR /home/runner/work/evalix/evalix
+          ls -l /home/runner/work/evalix/evalix
 
       - name: Install Task
         uses: arduino/setup-task@v2
