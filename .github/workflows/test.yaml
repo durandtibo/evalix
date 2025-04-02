@@ -24,12 +24,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install Task
+        uses: arduino/setup-task@v2
+
       - name: debug
         run: |
           ls -l /home/runner/work/evalix/evalix
-
-      - name: Install Task
-        uses: arduino/setup-task@v2
 
       - name: Install packages
         run: |
