@@ -29,15 +29,19 @@ jobs:
 
       - name: Install packages
         run: |
-          invoke install --all-deps
+          inv install --all-deps
+
+      - name: Show python config
+        run: |
+          inv show-python-config
 
       - name: Show installed packages
         run: |
-          invoke show-installed-packages
+          inv show-installed-packages
 
       - name: Run unit tests
         run: |
-          invoke unit-tests --cov
+          inv unit-tests --cov
 
 
   min:
@@ -65,12 +69,16 @@ jobs:
 
       - name: Install packages
         run: |
-          invoke install
+          inv install
+
+      - name: Show python config
+        run: |
+          inv show-python-config
 
       - name: Show installed packages
         run: |
-          invoke show-installed-packages
+          inv show-installed-packages
 
       - name: Run unit tests
         run: |
-          invoke unit-tests --cov
+          inv unit-tests --cov

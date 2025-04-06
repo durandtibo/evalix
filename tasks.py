@@ -9,6 +9,7 @@ from invoke import task
 if TYPE_CHECKING:
     from invoke.context import Context
 
+
 NAME = "evalix"
 SOURCE = f"src/{NAME}"
 TESTS = "tests"
@@ -21,8 +22,6 @@ def create_venv(c: Context) -> None:
     r"""Create a virtual environment."""
     c.run("uv venv")
     c.run("source .venv/bin/activate")
-    c.run("uv python list --only-installed")
-    c.run("uv python find")
     c.run("make install-invoke")
 
 
@@ -59,3 +58,11 @@ def show_installed_packages(c: Context) -> None:
     r"""Show the installed packages."""
     c.run("uv pip list")
     c.run("uv pip check")
+
+
+@task
+def show_python_config(c: Context) -> None:
+    r"""Show the python configuration."""
+    c.run("uv python list --only-installed")
+    c.run("uv python find")
+    c.run("which python")
