@@ -11,8 +11,7 @@ jobs:
       max-parallel: 8
       fail-fast: false
       matrix:
-#        os: [ ubuntu-latest, ubuntu-24.04, ubuntu-22.04, ubuntu-20.04, macos-latest, macos-15, macos-14, macos-13 ]
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, ubuntu-24.04, ubuntu-22.04, ubuntu-20.04, macos-latest, macos-15, macos-14, macos-13 ]
         python-version: [ '3.13', '3.12', '3.11', '3.10' ]
 
     steps:
@@ -41,39 +40,37 @@ jobs:
           invoke unit-tests --cov
 
 
-#  min:
-#    runs-on: ${{ matrix.os }}
-#    timeout-minutes: 10
-#    strategy:
-#      max-parallel: 8
-#      fail-fast: false
-#      matrix:
-#        os: [ ubuntu-latest, ubuntu-24.04, ubuntu-22.04, ubuntu-20.04, macos-latest, macos-15, macos-14, macos-13 ]
-#        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-#
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Install uv and set the python version
-#        uses: astral-sh/setup-uv@v5
-#        with:
-#          python-version: ${{ matrix.python-version }}
-#
-#      - name: Install Task
-#        uses: arduino/setup-task@v2
-#        with:
-#          repo-token: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Install packages
-#        run: |
-#          task install
-#
-#      - name: Show installed packages
-#        run: |
-#          uv pip list
-#          uv pip check
-#
-#      - name: Run unit tests
-#        run: |
-#          task unit-test
+  min:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      max-parallel: 8
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, ubuntu-24.04, ubuntu-22.04, ubuntu-20.04, macos-latest, macos-15, macos-14, macos-13 ]
+        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install invoke
+        run: |
+          make install-invoke
+
+      - name: Install packages
+        run: |
+          invoke install
+
+      - name: Show installed packages
+        run: |
+          invoke show-installed-packages
+
+      - name: Run unit tests
+        run: |
+          invoke unit-tests --cov
