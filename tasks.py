@@ -29,9 +29,9 @@ def create_venv(c: Context) -> None:
 @task
 def install(c: Context, all_deps: bool = False) -> None:
     r"""Install packages."""
-    cmd = ["uv pip install -r pyproject.toml"]
+    cmd = ["uv pip install -r pyproject.toml --group dev"]
     if all_deps:
-        cmd.append("--all-extras --group dev")
+        cmd.append("--all-extras")
     c.run(" ".join(cmd))
     c.run("uv pip install -e .")
 
