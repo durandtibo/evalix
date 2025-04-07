@@ -34,7 +34,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          inv unit-tests --cov
+          inv unit-test --cov
 
       - name: Upload coverage to Codecov
         if: github.repository == 'durandtibo/evalix' && (github.event_name == 'push' || github.event_name == 'pull_request')

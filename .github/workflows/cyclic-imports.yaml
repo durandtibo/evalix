@@ -36,45 +36,6 @@ jobs:
         run: |
           python -c "import evalix"
 
-      - name: check evalix.analyzer
-        run: |
-          python -c "from evalix import analyzer"
-      - name: check evalix.content
-        run: |
-          python -c "from evalix import content"
-      - name: check evalix.evaluator
-        run: |
-          python -c "from evalix import evaluator"
-      - name: check evalix.evaluator2
-        run: |
-          python -c "from evalix import evaluator2"
       - name: check evalix.metric
         run: |
           python -c "from evalix import metric"
-      - name: check evalix.output
-        run: |
-          python -c "from evalix import output"
-      - name: check evalix.plot
-        run: |
-          python -c "from evalix import plot"
-      - name: check evalix.plotter
-        run: |
-          python -c "from evalix import plotter"
-      - name: check evalix.reporter
-        run: |
-          python -c "from evalix import reporter"
-      - name: check evalix.result
-        run: |
-          python -c "from evalix import result"
-      - name: check evalix.runner
-        run: |
-          python -c "from evalix import runner"
-      - name: check evalix.section
-        run: |
-          python -c "from evalix import section"
-      - name: check evalix.state
-        run: |
-          python -c "from evalix import state"
-      - name: check evalix.utils
-        run: |
-          python -c "from evalix import utils"

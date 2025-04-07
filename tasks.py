@@ -66,7 +66,7 @@ def update(c: Context) -> None:
 
 
 @task
-def unit_tests(c: Context, cov: bool = False) -> None:
+def unit_test(c: Context, cov: bool = False) -> None:
     r"""Run the unit tests."""
     cmd = ["python -m pytest --xdoctest --timeout 10"]
     if cov:
