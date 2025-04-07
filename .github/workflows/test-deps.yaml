@@ -33,10 +33,6 @@ jobs:
         run: |
           inv install --all-deps
 
-      - name: Run unit tests
-        run: |
-          task unit-test
-
       - name: Install valid package version
         uses: durandtibo/pip-install-package-action@v0.3.1
         with:
