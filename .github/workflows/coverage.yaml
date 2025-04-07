@@ -13,6 +13,8 @@ jobs:
 
       - name: Install uv and set the python version
         uses: astral-sh/setup-uv@v5
+        with:
+          python-version: 3.13
 
       - name: Install invoke
         run: |
