@@ -11,30 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-
-      - name: Set environment variable
+      - name: Install invoke
         run: |
-          echo $(poetry run poetry env info --path)/bin >> $GITHUB_PATH
+          make install-invoke
 
       - name: Install packages
         run: |
-          make install-all
+          inv install --all-deps
+
+      - name: Show python config
+        run: |
+          inv show-python-config
 
       - name: Show installed packages
         run: |
-          poetry show
-          poetry show --tree
+          inv show-installed-packages
 
       - name: Run unit tests
         run: |
-          make unit-test-cov
+          inv unit-tests --cov
 
       - name: Upload coverage to Codecov
         if: github.repository == 'durandtibo/evalix' && (github.event_name == 'push' || github.event_name == 'pull_request')

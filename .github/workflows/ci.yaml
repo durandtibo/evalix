@@ -9,16 +9,16 @@ on:
   workflow_dispatch:  # to trigger manually
 
 jobs:
-#  coverage:
-#    uses: ./.github/workflows/coverage.yaml
-#    secrets: inherit
+  coverage:
+    uses: ./.github/workflows/coverage.yaml
+    secrets: inherit
 #  cyclic-imports:
 #    uses: ./.github/workflows/cyclic-imports.yaml
 #  doctest:
 #    uses: ./.github/workflows/doctest.yaml
 #    secrets: inherit
-#  format:
-#    uses: ./.github/workflows/format.yaml
+  format:
+    uses: ./.github/workflows/format.yaml
   pre-commit:
     uses: ./.github/workflows/pre-commit.yaml
   test:

@@ -9,12 +9,23 @@ from invoke import task
 if TYPE_CHECKING:
     from invoke.context import Context
 
-
 NAME = "evalix"
 SOURCE = f"src/{NAME}"
 TESTS = "tests"
 UNIT_TESTS = f"{TESTS}/unit"
 INTEGRATION_TESTS = f"{TESTS}/integration"
+
+
+@task
+def check_format(c: Context) -> None:
+    r"""Check code format."""
+    c.run("black --check .")
+
+
+@task
+def check_lint(c: Context) -> None:
+    r"""Check code format."""
+    c.run("ruff check --output-format=github .")
 
 
 @task
