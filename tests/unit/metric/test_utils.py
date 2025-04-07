@@ -642,6 +642,16 @@ def test_preprocess_score_binary_remove_y_score_nan() -> None:
     )
 
 
+def test_preprocess_score_binary_size_0() -> None:
+    assert objects_are_equal(
+        preprocess_score_binary(
+            y_true=np.array([]),
+            y_score=np.array([]),
+        ),
+        (np.array([]), np.array([])),
+    )
+
+
 def test_preprocess_score_binary_incorrect_shapes() -> None:
     with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes"):
         preprocess_score_binary(

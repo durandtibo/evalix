@@ -1,0 +1,58 @@
+name: Test - Dependencies
+on:
+  workflow_call:
+  workflow_dispatch:  # to trigger manually
+
+jobs:
+
+  coola:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      max-parallel: 8
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest ]
+        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
+        coola-version: [ 0.8.7 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install invoke
+        run: |
+          make install-invoke
+
+      - name: Install packages
+        run: |
+          inv install --all-deps
+
+      - name: Install valid package version
+        uses: durandtibo/pip-install-package-action@v0.3.1
+        with:
+          package-name: 'coola'
+          package-version: ${{ matrix.coola-version }}
+          python-version: ${{ matrix.python-version }}
+
+      - name: Show python config
+        run: |
+          inv show-python-config
+
+      - name: Show installed packages
+        run: |
+          inv show-installed-packages
+
+      - name: Run unit tests
+        run: |
+          inv unit-test
+
+
+  #################################
+  #     Optional dependencies     #
+  #################################
