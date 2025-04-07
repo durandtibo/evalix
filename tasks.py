@@ -37,6 +37,16 @@ def create_venv(c: Context) -> None:
 
 
 @task
+def doctest_src(c: Context) -> None:
+    r"""Check the docstrings in source folder."""
+    c.run(f"python -m pytest --xdoctest {SOURCE}")
+    c.run(
+        'find . -type f -name "*.md" | xargs python -m doctest -o NORMALIZE_WHITESPACE '
+        "-o ELLIPSIS -o REPORT_NDIFF"
+    )
+
+
+@task
 def install(c: Context, all_deps: bool = False) -> None:
     r"""Install packages."""
     cmd = ["uv pip install -r pyproject.toml --group dev"]
