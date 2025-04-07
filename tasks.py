@@ -19,30 +19,31 @@ INTEGRATION_TESTS = f"{TESTS}/integration"
 @task
 def check_format(c: Context) -> None:
     r"""Check code format."""
-    c.run("black --check .")
+    c.run("black --check .", pty=True)
 
 
 @task
 def check_lint(c: Context) -> None:
     r"""Check code format."""
-    c.run("ruff check --output-format=github .")
+    c.run("ruff check --output-format=github .", pty=True)
 
 
 @task
 def create_venv(c: Context) -> None:
     r"""Create a virtual environment."""
-    c.run("uv venv")
-    c.run("source .venv/bin/activate")
-    c.run("make install-invoke")
+    c.run("uv venv", pty=True)
+    c.run("source .venv/bin/activate", pty=True)
+    c.run("make install-invoke", pty=True)
 
 
 @task
 def doctest_src(c: Context) -> None:
     r"""Check the docstrings in source folder."""
-    c.run(f"python -m pytest --xdoctest {SOURCE}")
+    c.run(f"python -m pytest --xdoctest {SOURCE}", pty=True)
     c.run(
         'find . -type f -name "*.md" | xargs python -m doctest -o NORMALIZE_WHITESPACE '
-        "-o ELLIPSIS -o REPORT_NDIFF"
+        "-o ELLIPSIS -o REPORT_NDIFF",
+        pty=True,
     )
 
 
@@ -52,16 +53,16 @@ def install(c: Context, all_deps: bool = False) -> None:
     cmd = ["uv pip install -r pyproject.toml --group dev"]
     if all_deps:
         cmd.append("--all-extras")
-    c.run(" ".join(cmd))
-    c.run("uv pip install -e .")
+    c.run(" ".join(cmd), pty=True)
+    c.run("uv pip install -e .", pty=True)
 
 
 @task
 def update(c: Context) -> None:
     r"""Update the dependencies and pre-commit hooks."""
-    c.run("uv sync --upgrade --all-extras")
-    c.run("uv tool upgrade --all")
-    c.run("pre-commit autoupdate")
+    c.run("uv sync --upgrade --all-extras", pty=True)
+    c.run("uv tool upgrade --all", pty=True)
+    c.run("pre-commit autoupdate", pty=True)
 
 
 @task
@@ -71,19 +72,19 @@ def unit_tests(c: Context, cov: bool = False) -> None:
     if cov:
         cmd.append(f"--cov-report html --cov-report xml --cov-report term --cov={NAME}")
     cmd.append(f"{UNIT_TESTS}")
-    c.run(" ".join(cmd))
+    c.run(" ".join(cmd), pty=True)
 
 
 @task
 def show_installed_packages(c: Context) -> None:
     r"""Show the installed packages."""
-    c.run("uv pip list")
-    c.run("uv pip check")
+    c.run("uv pip list", pty=True)
+    c.run("uv pip check", pty=True)
 
 
 @task
 def show_python_config(c: Context) -> None:
     r"""Show the python configuration."""
-    c.run("uv python list --only-installed")
-    c.run("uv python find")
-    c.run("which python")
+    c.run("uv python list --only-installed", pty=True)
+    c.run("uv python find", pty=True)
+    c.run("which python", pty=True)
