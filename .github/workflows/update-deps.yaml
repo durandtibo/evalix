@@ -1,5 +1,7 @@
 name: Update dependencies
 on:
+  schedule:
+    - cron: "0 6 * * 6" # run every Saturday at 6:00 AM UTC
   workflow_call:
   workflow_dispatch:  # to trigger manually
 
@@ -8,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  format:
+  update-deps:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
