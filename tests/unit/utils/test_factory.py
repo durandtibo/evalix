@@ -4,10 +4,15 @@ from collections import deque
 from typing import Any
 
 import pytest
-from objectory import OBJECT_TARGET
 
 from evalix.testing.fixtures import objectory_available
 from evalix.utils.factory import setup_object
+from evalix.utils.imports import is_objectory_available
+
+if is_objectory_available():
+    from objectory import OBJECT_TARGET
+else:  # pragma: no cover
+    OBJECT_TARGET = "_target_"
 
 ##################################
 #     Tests for setup_object     #
