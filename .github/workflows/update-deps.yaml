@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  format:
+  update-deps:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
