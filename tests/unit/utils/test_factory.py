@@ -6,6 +6,7 @@ from typing import Any
 import pytest
 from objectory import OBJECT_TARGET
 
+from evalix.testing.fixtures import objectory_available
 from evalix.utils.factory import setup_object
 
 ##################################
@@ -13,6 +14,7 @@ from evalix.utils.factory import setup_object
 ##################################
 
 
+@objectory_available
 @pytest.mark.parametrize(
     "module", [deque(), {OBJECT_TARGET: "collections.deque", "iterable": [1, 2, 1, 3]}]
 )
