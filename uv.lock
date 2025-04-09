@@ -3,6 +3,12 @@ revision = 1
 requires-python = ">=3.10"
 
 [[package]]
+name = "antlr4-python3-runtime"
+version = "4.9.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3e/38/7859ff46355f76f8d19459005ca000b6e7012f2f1ca597746cbcd1fbfe5e/antlr4-python3-runtime-4.9.3.tar.gz", hash = "sha256:f224469b4168294902bb1efa80a8bf7855f24c99aef99cbefc1bcd3cce77881b", size = 117034 }
+
+[[package]]
 name = "black"
 version = "25.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -128,6 +134,18 @@ wheels = [
 ]
 
 [[package]]
+name = "colorlog"
+version = "6.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d3/7a/359f4d5df2353f26172b3cc39ea32daa39af8de522205f512f458923e677/colorlog-6.9.0.tar.gz", hash = "sha256:bfba54a1b93b94f54e1f4fe48395725a3d92fd2a4af702f6bd70946bdc0c6ac2", size = 16624 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e3/51/9b208e85196941db2f0654ad0357ca6388ab3ed67efdbfc799f35d1f83aa/colorlog-6.9.0-py3-none-any.whl", hash = "sha256:5906e71acd67cb07a71e779c47c4bcb45fb8c2993eebe9e5adcd6a6f1b283eff", size = 11424 },
+]
+
+[[package]]
 name = "coola"
 version = "0.8.7"
 source = { registry = "https://pypi.org/simple" }
@@ -239,8 +257,23 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
-all = [
+hydra = [
+    { name = "colorlog" },
+    { name = "hya" },
+    { name = "hydra-core" },
+    { name = "omegaconf" },
+]
+markdown = [
+    { name = "markdown" },
+]
+objectory = [
     { name = "objectory" },
+]
+scipy = [
+    { name = "scipy" },
+]
+tqdm = [
+    { name = "tqdm" },
 ]
 
 [package.dev-dependencies]
@@ -261,12 +294,19 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "colorlog", marker = "extra == 'hydra'", specifier = ">=6.7,<7.0" },
     { name = "coola", specifier = ">=0.8.7,<1.0" },
+    { name = "hya", marker = "extra == 'hydra'", specifier = ">=0.2,<1.0" },
+    { name = "hydra-core", marker = "extra == 'hydra'", specifier = ">=1.3,<2.0" },
+    { name = "markdown", marker = "extra == 'markdown'", specifier = ">=3.4,<4.0" },
     { name = "numpy", specifier = ">=1.22,<3.0" },
-    { name = "objectory", marker = "extra == 'all'", specifier = ">=0.2,<1.0" },
+    { name = "objectory", marker = "extra == 'objectory'", specifier = ">=0.2,<1.0" },
+    { name = "omegaconf", marker = "extra == 'hydra'", specifier = ">=2.1,<3.0" },
     { name = "scikit-learn", specifier = ">=1.3,<2.0" },
+    { name = "scipy", marker = "extra == 'scipy'", specifier = ">=1.10,<2.0" },
+    { name = "tqdm", marker = "extra == 'tqdm'", specifier = ">=4.65,<5.0" },
 ]
-provides-extras = ["all"]
+provides-extras = ["objectory", "hydra", "markdown", "scipy", "tqdm"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -320,6 +360,32 @@ wheels = [
 ]
 
 [[package]]
+name = "hya"
+version = "0.2.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "omegaconf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/12/be/198a235558dbb7b28ef4160f7148f282142be441df65e483816da8611b42/hya-0.2.4.tar.gz", hash = "sha256:7948d6b7cd0470a35e62f3eb7a0dd52a43d1520fe2d4dab0b19ea6b067d0ae12", size = 11887 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7b/f5/c066410233029cb52c165ffddc36636f781930cf2c3d6eea23d76af0576d/hya-0.2.4-py3-none-any.whl", hash = "sha256:1ed133c0bceaf845496fad4490253889365078714ca296ae34aa0ad022585d51", size = 10581 },
+]
+
+[[package]]
+name = "hydra-core"
+version = "1.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "antlr4-python3-runtime" },
+    { name = "omegaconf" },
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6d/8e/07e42bc434a847154083b315779b0a81d567154504624e181caf2c71cd98/hydra-core-1.3.2.tar.gz", hash = "sha256:8a878ed67216997c3e9d88a8e72e7b4767e81af37afb4ea3334b269a4390a824", size = 3263494 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c6/50/e0edd38dcd63fb26a8547f13d28f7a008bc4a3fd4eb4ff030673f22ad41a/hydra_core-1.3.2-py3-none-any.whl", hash = "sha256:fa0238a9e31df3373b35b0bfb672c34cc92718d21f81311d8996a16de1141d8b", size = 154547 },
+]
+
+[[package]]
 name = "identify"
 version = "2.6.9"
 source = { registry = "https://pypi.org/simple" }
@@ -353,6 +419,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/64/33/60135848598c076ce4b231e1b1895170f45fbcaeaa2c9d5e38b04db70c35/joblib-1.4.2.tar.gz", hash = "sha256:2382c5816b2636fbd20a09e0f4e9dad4736765fdfb7dca582943b9c1366b3f0e", size = 2116621 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/91/29/df4b9b42f2be0b623cbd5e2140cafcaa2bef0759a00b7b70104dcfe2fb51/joblib-1.4.2-py3-none-any.whl", hash = "sha256:06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6", size = 301817 },
+]
+
+[[package]]
+name = "markdown"
+version = "3.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/54/28/3af612670f82f4c056911fbbbb42760255801b3068c48de792d354ff4472/markdown-3.7.tar.gz", hash = "sha256:2ae2471477cfd02dbbf038d5d9bc226d40def84b4fe2986e49b59b6b472bbed2", size = 357086 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3f/08/83871f3c50fc983b88547c196d11cf8c3340e37c32d2e9d6152abe2c61f7/Markdown-3.7-py3-none-any.whl", hash = "sha256:7eb6df5690b81a1d7942992c97fad2938e956e79df20cbc6186e9c3a77b1c803", size = 106349 },
 ]
 
 [[package]]
@@ -445,6 +520,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e5/60/15b30e3cdc71bfe565e32818b8a6b09a442f1d5107ee9887b6413f399dca/objectory-0.2.0.tar.gz", hash = "sha256:c47d447cc4b34d292ce4dd967bdad94554e5cac12940dfd808713f0f41a9fb6e", size = 15937 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f8/4a/ba733aa2e42a3e1d1903116904b365586798f5d12b4595dc1170a8ff3432/objectory-0.2.0-py3-none-any.whl", hash = "sha256:4da872ccc9768fe61bd14d37189a850a2524b19ebc3d33b71aa0c7b3423481e8", size = 17734 },
+]
+
+[[package]]
+name = "omegaconf"
+version = "2.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "antlr4-python3-runtime" },
+    { name = "pyyaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/09/48/6388f1bb9da707110532cb70ec4d2822858ddfb44f1cdf1233c20a80ea4b/omegaconf-2.3.0.tar.gz", hash = "sha256:d5d4b6d29955cc50ad50c46dc269bcd92c6e00f5f90d23ab5fee7bfca4ba4cc7", size = 3298120 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e3/94/1843518e420fa3ed6919835845df698c7e27e183cb997394e4a670973a65/omegaconf-2.3.0-py3-none-any.whl", hash = "sha256:7b4df175cdb08ba400f45cae3bdcae7ba8365db4d165fc65fd04b050ab63b46b", size = 79500 },
 ]
 
 [[package]]
@@ -777,6 +865,18 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/2b/ae/c1b22d4524b0e10da2f29a176fb2890386f7bd1f63aacf186444873a88a0/tornado-6.4.2-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:932d195ca9015956fa502c6b56af9eb06106140d844a335590c1ec7f5277d10c", size = 437261 },
     { url = "https://files.pythonhosted.org/packages/b5/25/36dbd49ab6d179bcfc4c6c093a51795a4f3bed380543a8242ac3517a1751/tornado-6.4.2-cp38-abi3-win32.whl", hash = "sha256:2876cef82e6c5978fde1e0d5b1f919d756968d5b4282418f3146b79b58556482", size = 438463 },
     { url = "https://files.pythonhosted.org/packages/61/cc/58b1adeb1bb46228442081e746fcdbc4540905c87e8add7c277540934edb/tornado-6.4.2-cp38-abi3-win_amd64.whl", hash = "sha256:908b71bf3ff37d81073356a5fadcc660eb10c1476ee6e2725588626ce7e5ca38", size = 438907 },
+]
+
+[[package]]
+name = "tqdm"
+version = "4.67.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2", size = 78540 },
 ]
 
 [[package]]
