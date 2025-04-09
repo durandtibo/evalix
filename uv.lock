@@ -374,10 +374,10 @@ requires-dist = [
     { name = "hydra-core", marker = "extra == 'hydra'", specifier = ">=1.3,<2.0" },
     { name = "markdown", marker = "extra == 'markdown'", specifier = ">=3.4,<4.0" },
     { name = "matplotlib", specifier = ">=3.6,<4.0" },
-    { name = "numpy", specifier = ">=1.22,<3.0" },
+    { name = "numpy", specifier = ">=2.0,<3.0" },
     { name = "objectory", marker = "extra == 'objectory'", specifier = ">=0.2,<1.0" },
     { name = "omegaconf", marker = "extra == 'hydra'", specifier = ">=2.1,<3.0" },
-    { name = "scikit-learn", specifier = ">=1.3,<2.0" },
+    { name = "scikit-learn", specifier = ">=1.5,<2.0" },
     { name = "scipy", marker = "extra == 'scipy'", specifier = ">=1.10,<2.0" },
     { name = "tqdm", marker = "extra == 'tqdm'", specifier = ">=4.65,<5.0" },
 ]
