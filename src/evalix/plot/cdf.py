@@ -4,12 +4,12 @@ from __future__ import annotations
 
 __all__ = ["plot_cdf"]
 
+import itertools
 from typing import TYPE_CHECKING
 
 import numpy as np
 
 from evalix.utils.array import nonnan
-import itertools
 
 if TYPE_CHECKING:
     from matplotlib.axes import Axes
