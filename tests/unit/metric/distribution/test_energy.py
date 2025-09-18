@@ -134,7 +134,7 @@ def test_energy_distance_nan_propagate_v_values() -> None:
 
 @scipy_available
 def test_energy_distance_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'u_values' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'u_values' contains at least one NaN value"):
         energy_distance(
             u_values=np.array([float("nan"), 2, 3, 4, 5, float("nan")]),
             v_values=np.array([1, 2, 3, 4, float("nan"), float("nan")]),
@@ -144,7 +144,7 @@ def test_energy_distance_nan_raise() -> None:
 
 @scipy_available
 def test_energy_distance_nan_raise_u_values() -> None:
-    with pytest.raises(ValueError, match="'u_values' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'u_values' contains at least one NaN value"):
         energy_distance(
             u_values=np.array([float("nan"), 2, 3, 4, 5]),
             v_values=np.array([1, 2, 3, 4, 5]),
@@ -154,7 +154,7 @@ def test_energy_distance_nan_raise_u_values() -> None:
 
 @scipy_available
 def test_energy_distance_nan_raise_v_values() -> None:
-    with pytest.raises(ValueError, match="'v_values' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'v_values' contains at least one NaN value"):
         energy_distance(
             u_values=np.array([1, 2, 3, 4, 5]),
             v_values=np.array([1, 2, 3, 4, float("nan")]),

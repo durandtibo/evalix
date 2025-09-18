@@ -56,10 +56,10 @@ def test_find_nbins_min_equals_max() -> None:
 
 @pytest.mark.parametrize("bin_size", [0, -0.1])
 def test_find_nbins_incorrect_bin_size(bin_size: float) -> None:
-    with pytest.raises(RuntimeError, match="Incorrect bin_size"):
+    with pytest.raises(RuntimeError, match=r"Incorrect bin_size"):
         find_nbins(bin_size=bin_size, min=0, max=2)
 
 
 def test_find_nbins_incorrect_max() -> None:
-    with pytest.raises(RuntimeError, match="Incorrect max"):
+    with pytest.raises(RuntimeError, match=r"Incorrect max"):
         find_nbins(bin_size=1, min=5, max=2)

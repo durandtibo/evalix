@@ -196,7 +196,7 @@ def test_pearsonr_propagate_y() -> None:
 
 @scipy_available
 def test_pearsonr_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'x' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'x' contains at least one NaN value"):
         pearsonr(
             x=np.array([float("nan"), 2, 3, 4, 5, float("nan")]),
             y=np.array([1, 2, 3, 4, float("nan"), float("nan")]),
@@ -206,7 +206,7 @@ def test_pearsonr_nan_raise() -> None:
 
 @scipy_available
 def test_pearsonr_nan_raise_x() -> None:
-    with pytest.raises(ValueError, match="'x' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'x' contains at least one NaN value"):
         pearsonr(
             x=np.array([float("nan"), 2, 3, 4, 5]),
             y=np.array([1, 2, 3, 4, 5]),
@@ -216,7 +216,7 @@ def test_pearsonr_nan_raise_x() -> None:
 
 @scipy_available
 def test_pearsonr_nan_raise_y() -> None:
-    with pytest.raises(ValueError, match="'y' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y' contains at least one NaN value"):
         pearsonr(
             x=np.array([1, 2, 3, 4, 5]),
             y=np.array([1, 2, 3, 4, float("nan")]),

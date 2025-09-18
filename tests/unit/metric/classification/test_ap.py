@@ -76,7 +76,7 @@ def test_average_precision_binary_nan_propagate() -> None:
 
 
 def test_average_precision_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         average_precision(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -221,7 +221,7 @@ def test_average_precision_multiclass_nan_propagate() -> None:
 
 
 def test_roc_multiclass_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         average_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -333,7 +333,7 @@ def test_average_precision_multilabel_nan_propagate() -> None:
 
 
 def test_roc_multilabel_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         average_precision(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array(
@@ -345,7 +345,7 @@ def test_roc_multilabel_auc_nan_raise() -> None:
 
 
 def test_average_precision_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         average_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2]),
             y_score=np.array(
@@ -421,7 +421,7 @@ def test_binary_average_precision_prefix_suffix() -> None:
 
 
 def test_binary_average_precision_incorrect_shape() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes:"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_score' have different shapes:"):
         binary_average_precision(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([2, -1, 0, 3, 1, 6]),
@@ -495,7 +495,7 @@ def test_binary_average_precision_nan_propagate_y_score() -> None:
 
 
 def test_binary_average_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_average_precision(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -504,7 +504,7 @@ def test_binary_average_precision_nan_raise() -> None:
 
 
 def test_binary_average_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_average_precision(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([2, -1, 0, 3, 1]),
@@ -513,7 +513,7 @@ def test_binary_average_precision_nan_raise_y_true() -> None:
 
 
 def test_binary_average_precision_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         binary_average_precision(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -819,7 +819,7 @@ def test_multiclass_average_precision_nan_propagate_y_score() -> None:
 
 
 def test_multiclass_average_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_average_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -838,7 +838,7 @@ def test_multiclass_average_precision_nan_raise() -> None:
 
 
 def test_multiclass_average_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_average_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -857,7 +857,7 @@ def test_multiclass_average_precision_nan_raise_y_true() -> None:
 
 
 def test_multiclass_average_precision_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         multiclass_average_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, 2]),
             y_score=np.array(
@@ -1085,7 +1085,7 @@ def test_multilabel_average_precision_nan_propagate_y_score() -> None:
 
 
 def test_multilabel_average_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_average_precision(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array(
@@ -1096,7 +1096,7 @@ def test_multilabel_average_precision_nan_raise() -> None:
 
 
 def test_multilabel_average_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_average_precision(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array([[2, -1, 1], [-1, 1, -2], [0, 2, -3], [3, -2, 4], [1, -3, 5]]),
@@ -1105,7 +1105,7 @@ def test_multilabel_average_precision_nan_raise_y_true() -> None:
 
 
 def test_multilabel_average_precision_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         multilabel_average_precision(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_score=np.array(
@@ -1133,5 +1133,5 @@ def test_find_label_type_multilabel() -> None:
 
 
 def test_find_label_type_incorrect() -> None:
-    with pytest.raises(RuntimeError, match="Could not find the label type"):
+    with pytest.raises(RuntimeError, match=r"Could not find the label type"):
         find_label_type(y_true=np.ones(5), y_score=np.ones((5, 2, 3)))

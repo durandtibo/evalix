@@ -76,7 +76,7 @@ def test_roc_auc_binary_nan_propagate() -> None:
 
 
 def test_roc_auc_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         roc_auc(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -221,7 +221,7 @@ def test_roc_auc_multiclass_nan_propagate() -> None:
 
 
 def test_roc_multiclass_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         roc_auc(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -333,7 +333,7 @@ def test_roc_auc_multilabel_nan_propagate() -> None:
 
 
 def test_roc_multilabel_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         roc_auc(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array(
@@ -345,7 +345,7 @@ def test_roc_multilabel_auc_nan_raise() -> None:
 
 
 def test_roc_auc_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         roc_auc(
             y_true=np.array([0, 0, 1, 1, 2, 2]),
             y_score=np.array(
@@ -418,7 +418,7 @@ def test_binary_roc_auc_prefix_suffix() -> None:
 
 
 def test_binary_roc_auc_incorrect_shape() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes:"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_score' have different shapes:"):
         binary_roc_auc(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([2, -1, 0, 3, 1, 6]),
@@ -492,7 +492,7 @@ def test_binary_roc_auc_nan_propagate_y_score() -> None:
 
 
 def test_binary_roc_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_roc_auc(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -501,7 +501,7 @@ def test_binary_roc_auc_nan_raise() -> None:
 
 
 def test_binary_roc_auc_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_roc_auc(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([2, -1, 0, 3, 1]),
@@ -510,7 +510,7 @@ def test_binary_roc_auc_nan_raise_y_true() -> None:
 
 
 def test_binary_roc_auc_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         binary_roc_auc(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -791,7 +791,7 @@ def test_multiclass_roc_auc_nan_propagate_y_score() -> None:
 
 
 def test_multiclass_roc_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_roc_auc(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -810,7 +810,7 @@ def test_multiclass_roc_auc_nan_raise() -> None:
 
 
 def test_multiclass_roc_auc_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_roc_auc(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_score=np.array(
@@ -829,7 +829,7 @@ def test_multiclass_roc_auc_nan_raise_y_true() -> None:
 
 
 def test_multiclass_roc_auc_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         multiclass_roc_auc(
             y_true=np.array([0, 0, 1, 1, 2, 2, 2]),
             y_score=np.array(
@@ -1057,7 +1057,7 @@ def test_multilabel_roc_auc_nan_propagate_y_score() -> None:
 
 
 def test_multilabel_roc_auc_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_roc_auc(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array(
@@ -1068,7 +1068,7 @@ def test_multilabel_roc_auc_nan_raise() -> None:
 
 
 def test_multilabel_roc_auc_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_roc_auc(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, float("nan")]]),
             y_score=np.array([[2, -1, 1], [-1, 1, -2], [0, 2, -3], [3, -2, 4], [1, -3, 5]]),
@@ -1077,7 +1077,7 @@ def test_multilabel_roc_auc_nan_raise_y_true() -> None:
 
 
 def test_multilabel_roc_auc_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         multilabel_roc_auc(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_score=np.array(

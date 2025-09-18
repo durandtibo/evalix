@@ -128,7 +128,7 @@ def test_confusion_matrix_binary_nan_propagate() -> None:
 
 
 def test_confusion_matrix_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         confusion_matrix(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, float("nan")]),
@@ -198,7 +198,7 @@ def test_confusion_matrix_multiclass_nan_propagate() -> None:
 
 
 def test_confusion_matrix_multiclass_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         confusion_matrix(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
@@ -291,7 +291,7 @@ def test_confusion_matrix_multilabel_nan_propagate() -> None:
 
 
 def test_confusion_matrix_multilabel_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         confusion_matrix(
             y_true=np.array(
                 [[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1], [float("nan"), 0, 1]]
@@ -305,7 +305,7 @@ def test_confusion_matrix_multilabel_nan_raise() -> None:
 
 
 def test_confusion_matrix_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         confusion_matrix(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, 1]),
@@ -555,7 +555,7 @@ def test_binary_confusion_matrix_nan_propagate_y_pred() -> None:
 
 
 def test_binary_confusion_matrix_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_confusion_matrix(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, float("nan")]),
@@ -564,7 +564,7 @@ def test_binary_confusion_matrix_nan_raise() -> None:
 
 
 def test_binary_confusion_matrix_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_confusion_matrix(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, 1]),
@@ -573,7 +573,7 @@ def test_binary_confusion_matrix_nan_raise_y_true() -> None:
 
 
 def test_binary_confusion_matrix_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         binary_confusion_matrix(
             y_true=np.array([1, 0, 0, 1, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, 1, float("nan")]),
@@ -729,7 +729,7 @@ def test_multiclass_confusion_matrix_nan_propagate_y_pred() -> None:
 
 
 def test_multiclass_confusion_matrix_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_confusion_matrix(
             y_true=np.array([0, 1, 1, 2, 2, 2, float("nan")]),
             y_pred=np.array([0, 1, 1, 2, 2, 2, float("nan")]),
@@ -738,7 +738,7 @@ def test_multiclass_confusion_matrix_nan_raise() -> None:
 
 
 def test_multiclass_confusion_matrix_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_confusion_matrix(
             y_true=np.array([0, 1, 1, 2, 2, 2, float("nan")]),
             y_pred=np.array([0, 1, 1, 2, 2, 2, 1]),
@@ -747,7 +747,7 @@ def test_multiclass_confusion_matrix_nan_raise_y_true() -> None:
 
 
 def test_multiclass_confusion_matrix_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multiclass_confusion_matrix(
             y_true=np.array([0, 1, 1, 2, 2, 2, 1]),
             y_pred=np.array([0, 1, 1, 2, 2, 2, float("nan")]),
@@ -931,7 +931,7 @@ def test_multilabel_confusion_matrix_nan_propagate_y_pred() -> None:
 
 
 def test_multilabel_confusion_matrix_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_confusion_matrix(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [float("nan"), 0, 1]]),
@@ -940,7 +940,7 @@ def test_multilabel_confusion_matrix_nan_raise() -> None:
 
 
 def test_multilabel_confusion_matrix_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_confusion_matrix(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
@@ -949,7 +949,7 @@ def test_multilabel_confusion_matrix_nan_raise_y_true() -> None:
 
 
 def test_multilabel_confusion_matrix_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multilabel_confusion_matrix(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
