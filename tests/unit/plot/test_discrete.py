@@ -115,7 +115,7 @@ def test_prepare_values_bar_discrete_temporal_values_none() -> None:
 
 
 def test_prepare_values_bar_discrete_temporal_values_incorrect() -> None:
-    with pytest.raises(RuntimeError, match="values length .* do not match with the count matrix"):
+    with pytest.raises(RuntimeError, match=r"values length .* do not match with the count matrix"):
         _prepare_values_bar_discrete_temporal(values=[1, 2, 3], num_values=5)
 
 
@@ -135,7 +135,7 @@ def test_prepare_steps_bar_discrete_temporal_steps_none() -> None:
 
 
 def test_prepare_steps_bar_discrete_temporal_steps_incorrect() -> None:
-    with pytest.raises(RuntimeError, match="steps length .* do not match with the count matrix"):
+    with pytest.raises(RuntimeError, match=r"steps length .* do not match with the count matrix"):
         _prepare_steps_bar_discrete_temporal(steps=[1, 2, 3], num_steps=5)
 
 

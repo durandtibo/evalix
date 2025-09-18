@@ -49,7 +49,7 @@ def test_check_colorlog_with_package() -> None:
 def test_check_colorlog_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_colorlog_available", lambda: False),
-        pytest.raises(RuntimeError, match="'colorlog' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'colorlog' package is required but not installed."),
     ):
         check_colorlog()
 
@@ -103,7 +103,7 @@ def test_check_hya_with_package() -> None:
 def test_check_hya_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_hya_available", lambda: False),
-        pytest.raises(RuntimeError, match="'hya' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'hya' package is required but not installed."),
     ):
         check_hya()
 
@@ -157,7 +157,7 @@ def test_check_hydra_with_package() -> None:
 def test_check_hydra_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_hydra_available", lambda: False),
-        pytest.raises(RuntimeError, match="'hydra' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'hydra' package is required but not installed."),
     ):
         check_hydra()
 
@@ -211,7 +211,7 @@ def test_check_markdown_with_package() -> None:
 def test_check_markdown_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_markdown_available", lambda: False),
-        pytest.raises(RuntimeError, match="'markdown' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'markdown' package is required but not installed."),
     ):
         check_markdown()
 
@@ -265,7 +265,7 @@ def test_check_matplotlib_with_package() -> None:
 def test_check_matplotlib_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_matplotlib_available", lambda: False),
-        pytest.raises(RuntimeError, match="'matplotlib' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'matplotlib' package is required but not installed."),
     ):
         check_matplotlib()
 
@@ -319,7 +319,7 @@ def test_check_objectory_with_package() -> None:
 def test_check_objectory_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_objectory_available", lambda: False),
-        pytest.raises(RuntimeError, match="'objectory' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'objectory' package is required but not installed."),
     ):
         check_objectory()
 
@@ -373,7 +373,7 @@ def test_check_omegaconf_with_package() -> None:
 def test_check_omegaconf_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_omegaconf_available", lambda: False),
-        pytest.raises(RuntimeError, match="'omegaconf' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'omegaconf' package is required but not installed."),
     ):
         check_omegaconf()
 
@@ -427,7 +427,7 @@ def test_check_scipy_with_package() -> None:
 def test_check_scipy_without_package() -> None:
     with (
         patch("evalix.utils.imports.is_scipy_available", lambda: False),
-        pytest.raises(RuntimeError, match="'scipy' package is required but not installed."),
+        pytest.raises(RuntimeError, match=r"'scipy' package is required but not installed."),
     ):
         check_scipy()
 

@@ -102,7 +102,7 @@ def test_boxplot_continuous_temporal_empty() -> None:
 
 def test_boxplot_continuous_temporal_incorrect_lengths() -> None:
     _fig, ax = plt.subplots()
-    with pytest.raises(RuntimeError, match="data and steps have different lengths"):
+    with pytest.raises(RuntimeError, match=r"data and steps have different lengths"):
         boxplot_continuous_temporal(ax=ax, data=[np.ones(5), np.zeros(4)], steps=[1, 2, 3])
 
 

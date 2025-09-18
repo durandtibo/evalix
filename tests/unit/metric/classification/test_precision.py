@@ -72,7 +72,7 @@ def test_precision_binary_nan_propagate() -> None:
 
 
 def test_precision_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         precision(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, float("nan")]),
@@ -171,7 +171,7 @@ def test_precision_multiclass_nan_propagate() -> None:
 
 
 def test_precision_multiclass_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
@@ -278,7 +278,7 @@ def test_precision_multilabel_nan_propagate() -> None:
 
 
 def test_precision_multilabel_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         precision(
             y_true=np.array(
                 [[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1], [1, 0, float("nan")]]
@@ -292,7 +292,7 @@ def test_precision_multilabel_nan_raise() -> None:
 
 
 def test_precision_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         precision(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, 1]),
@@ -350,7 +350,7 @@ def test_binary_precision_prefix_suffix() -> None:
 
 
 def test_binary_precision_incorrect_shape() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_pred' have different shapes:"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_pred' have different shapes:"):
         binary_precision(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, 1, 0]),
@@ -424,7 +424,7 @@ def test_binary_precision_nan_propagate_y_pred() -> None:
 
 
 def test_binary_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_precision(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, float("nan"), 1]),
@@ -433,7 +433,7 @@ def test_binary_precision_nan_raise() -> None:
 
 
 def test_binary_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_precision(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, 1]),
@@ -442,7 +442,7 @@ def test_binary_precision_nan_raise_y_true() -> None:
 
 
 def test_binary_precision_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         binary_precision(
             y_true=np.array([1, 0, 0, 1, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, float("nan"), 1]),
@@ -638,7 +638,7 @@ def test_multiclass_precision_nan_propagate_y_pred() -> None:
 
 
 def test_multiclass_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, float("nan"), 2]),
@@ -647,7 +647,7 @@ def test_multiclass_precision_nan_raise() -> None:
 
 
 def test_multiclass_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, 2, 2]),
@@ -656,7 +656,7 @@ def test_multiclass_precision_nan_raise_y_true() -> None:
 
 
 def test_multiclass_precision_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multiclass_precision(
             y_true=np.array([0, 0, 1, 1, 2, 2, 2]),
             y_pred=np.array([0, 0, 1, 1, 2, float("nan"), 2]),
@@ -866,7 +866,7 @@ def test_multilabel_precision_nan_propagate_y_pred() -> None:
 
 
 def test_multilabel_precision_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_precision(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [float("nan"), 0, 1]]),
@@ -875,7 +875,7 @@ def test_multilabel_precision_nan_raise() -> None:
 
 
 def test_multilabel_precision_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_precision(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
@@ -884,7 +884,7 @@ def test_multilabel_precision_nan_raise_y_true() -> None:
 
 
 def test_multilabel_precision_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multilabel_precision(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [float("nan"), 0, 1]]),

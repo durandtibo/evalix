@@ -24,7 +24,7 @@ def test_plot_null_temporal_empty() -> None:
 
 def test_plot_null_temporal_incorrect_total() -> None:
     _fig, ax = plt.subplots()
-    with pytest.raises(ValueError, match="nulls .* and totals .* have different lengths"):
+    with pytest.raises(ValueError, match=r"nulls .* and totals .* have different lengths"):
         plot_null_temporal(
             ax, nulls=[1, 2, 3, 4], totals=[10, 12, 14, 16, 18], labels=["jan", "feb", "mar", "apr"]
         )
@@ -32,7 +32,7 @@ def test_plot_null_temporal_incorrect_total() -> None:
 
 def test_plot_null_temporal_incorrect_labels() -> None:
     _fig, ax = plt.subplots()
-    with pytest.raises(ValueError, match="nulls .* and labels .* have different lengths"):
+    with pytest.raises(ValueError, match=r"nulls .* and labels .* have different lengths"):
         plot_null_temporal(
             ax,
             nulls=[1, 2, 3, 4],

@@ -21,17 +21,17 @@ def test_check_square_matrix_correct() -> None:
 
 
 def test_check_square_matrix_1d() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'my_var'"):
+    with pytest.raises(ValueError, match=r"Incorrect 'my_var'"):
         check_square_matrix("my_var", np.ones((3,)))
 
 
 def test_check_square_matrix_3d() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'my_var'"):
+    with pytest.raises(ValueError, match=r"Incorrect 'my_var'"):
         check_square_matrix("my_var", np.ones((3, 3, 3)))
 
 
 def test_check_square_matrix_not_square() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'my_var'"):
+    with pytest.raises(ValueError, match=r"Incorrect 'my_var'"):
         check_square_matrix("my_var", np.ones((3, 4)))
 
 

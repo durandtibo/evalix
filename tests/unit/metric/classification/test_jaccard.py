@@ -71,7 +71,7 @@ def test_jaccard_binary_nan_propagate() -> None:
 
 
 def test_jaccard_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         jaccard(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, float("nan")]),
@@ -170,7 +170,7 @@ def test_jaccard_multiclass_nan_propagate() -> None:
 
 
 def test_jaccard_multiclass_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         jaccard(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
@@ -277,7 +277,7 @@ def test_jaccard_multilabel_nan_propagate() -> None:
 
 
 def test_jaccard_multilabel_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         jaccard(
             y_true=np.array(
                 [[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1], [1, 0, float("nan")]]
@@ -291,7 +291,7 @@ def test_jaccard_multilabel_nan_raise() -> None:
 
 
 def test_jaccard_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         jaccard(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, 1]),
@@ -418,7 +418,7 @@ def test_binary_jaccard_nan_propagate_y_pred() -> None:
 
 
 def test_binary_jaccard_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_jaccard(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, float("nan"), 1]),
@@ -427,7 +427,7 @@ def test_binary_jaccard_nan_raise() -> None:
 
 
 def test_binary_jaccard_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_jaccard(
             y_true=np.array([1, 0, 0, 1, 1, float("nan")]),
             y_pred=np.array([1, 0, 0, 1, 1, 1]),
@@ -436,7 +436,7 @@ def test_binary_jaccard_nan_raise_y_true() -> None:
 
 
 def test_binary_jaccard_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         binary_jaccard(
             y_true=np.array([1, 0, 0, 1, 1, 1]),
             y_pred=np.array([1, 0, 0, 1, float("nan"), 1]),
@@ -600,7 +600,7 @@ def test_multiclass_jaccard_nan_propagate_y_pred() -> None:
 
 
 def test_multiclass_jaccard_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_jaccard(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, float("nan"), 2]),
@@ -609,7 +609,7 @@ def test_multiclass_jaccard_nan_raise() -> None:
 
 
 def test_multiclass_jaccard_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_jaccard(
             y_true=np.array([0, 0, 1, 1, 2, 2, float("nan")]),
             y_pred=np.array([0, 0, 1, 1, 2, 2, 2]),
@@ -618,7 +618,7 @@ def test_multiclass_jaccard_nan_raise_y_true() -> None:
 
 
 def test_multiclass_jaccard_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multiclass_jaccard(
             y_true=np.array([0, 0, 1, 1, 2, 2, 2]),
             y_pred=np.array([0, 0, 1, 1, 2, float("nan"), 2]),
@@ -828,7 +828,7 @@ def test_multilabel_jaccard_nan_propagate_y_pred() -> None:
 
 
 def test_multilabel_jaccard_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_jaccard(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [float("nan"), 0, 1]]),
@@ -837,7 +837,7 @@ def test_multilabel_jaccard_nan_raise() -> None:
 
 
 def test_multilabel_jaccard_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multilabel_jaccard(
             y_true=np.array([[1, 0, float("nan")], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
@@ -846,7 +846,7 @@ def test_multilabel_jaccard_nan_raise_y_true() -> None:
 
 
 def test_multilabel_jaccard_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         multilabel_jaccard(
             y_true=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [1, 0, 1]]),
             y_pred=np.array([[1, 0, 1], [0, 1, 0], [0, 1, 0], [1, 0, 1], [float("nan"), 0, 1]]),

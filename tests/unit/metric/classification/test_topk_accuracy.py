@@ -125,7 +125,7 @@ def test_top_k_accuracy_binary_nan_propagate() -> None:
 
 
 def test_top_k_accuracy_binary_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_top_k_accuracy(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -166,7 +166,7 @@ def test_top_k_accuracy_multiclass_nan_propagate() -> None:
 
 
 def test_top_k_accuracy_multiclass_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         top_k_accuracy(
             y_true=np.array([0, 1, 2, float("nan")]),
             y_score=np.array(
@@ -296,7 +296,7 @@ def test_binary_top_k_accuracy_nan_propagate_y_score() -> None:
 
 
 def test_binary_top_k_accuracy_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_top_k_accuracy(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -306,7 +306,7 @@ def test_binary_top_k_accuracy_nan_raise() -> None:
 
 
 def test_binary_top_k_accuracy_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         binary_top_k_accuracy(
             y_true=np.array([1, 0, 0, 1, float("nan")]),
             y_score=np.array([2, -1, 0, 3, 1]),
@@ -316,7 +316,7 @@ def test_binary_top_k_accuracy_nan_raise_y_true() -> None:
 
 
 def test_binary_top_k_accuracy_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         binary_top_k_accuracy(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([float("nan"), -1, 0, 3, 1]),
@@ -449,7 +449,7 @@ def test_multiclass_top_k_accuracy_nan_propagate_y_score() -> None:
 
 
 def test_multiclass_top_k_accuracy_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_top_k_accuracy(
             y_true=np.array([0, 1, 2, float("nan")]),
             y_score=np.array(
@@ -460,7 +460,7 @@ def test_multiclass_top_k_accuracy_nan_raise() -> None:
 
 
 def test_multiclass_top_k_accuracy_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         multiclass_top_k_accuracy(
             y_true=np.array([0, 1, 2, float("nan")]),
             y_score=np.array([[0.5, 0.2, 0.2], [0.3, 0.4, 0.2], [0.2, 0.4, 0.3], [0.7, 0.2, 0.1]]),
@@ -469,7 +469,7 @@ def test_multiclass_top_k_accuracy_nan_raise_y_true() -> None:
 
 
 def test_multiclass_top_k_accuracy_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         multiclass_top_k_accuracy(
             y_true=np.array([0, 1, 2, 2]),
             y_score=np.array(

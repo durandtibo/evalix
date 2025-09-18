@@ -138,7 +138,7 @@ def test_ndcg_nan_propagate_y_score() -> None:
 
 @scipy_available
 def test_ndcg_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         ndcg(
             y_true=np.array([[1, 0, 0], [1, 2, 0], [1, 1, 2], [0, 0, float("nan")]]),
             y_score=np.array(
@@ -150,7 +150,7 @@ def test_ndcg_nan_raise() -> None:
 
 @scipy_available
 def test_ndcg_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         ndcg(
             y_true=np.array([[1, 0, 0], [1, 2, 0], [1, 1, 2], [0, 0, float("nan")]]),
             y_score=np.array([[2.0, 1.0, 0.0], [0.0, 1.0, -1.0], [0.0, 0.0, 1.0], [1.0, 2.0, 3.0]]),
@@ -160,7 +160,7 @@ def test_ndcg_nan_raise_y_true() -> None:
 
 @scipy_available
 def test_ndcg_nan_raise_y_score() -> None:
-    with pytest.raises(ValueError, match="'y_score' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_score' contains at least one NaN value"):
         ndcg(
             y_true=np.array([[1, 0, 0], [1, 2, 0], [1, 1, 2], [0, 0, 1]]),
             y_score=np.array(

@@ -128,7 +128,7 @@ def test_mean_absolute_percentage_error_nan_propagate_y_pred() -> None:
 
 
 def test_mean_absolute_percentage_error_nan_raise() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         mean_absolute_percentage_error(
             y_true=np.array([float("nan"), 2, 3, 4, 5, float("nan")]),
             y_pred=np.array([1, 2, 3, 4, float("nan"), float("nan")]),
@@ -137,7 +137,7 @@ def test_mean_absolute_percentage_error_nan_raise() -> None:
 
 
 def test_mean_absolute_percentage_error_nan_raise_y_true() -> None:
-    with pytest.raises(ValueError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_true' contains at least one NaN value"):
         mean_absolute_percentage_error(
             y_true=np.array([1, 2, 3, 4, 5, float("nan")]),
             y_pred=np.array([1, 2, 3, 4, 5, 0]),
@@ -146,7 +146,7 @@ def test_mean_absolute_percentage_error_nan_raise_y_true() -> None:
 
 
 def test_mean_absolute_percentage_error_nan_raise_y_pred() -> None:
-    with pytest.raises(ValueError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'y_pred' contains at least one NaN value"):
         mean_absolute_percentage_error(
             y_true=np.array([1, 2, 3, 4, 5, 0]),
             y_pred=np.array([1, 2, 3, 4, 5, float("nan")]),

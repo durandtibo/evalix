@@ -41,7 +41,7 @@ def test_check_array_ndim_2(shape: tuple[int, ...]) -> None:
 
 
 def test_check_array_ndim_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect number of array dimensions"):
+    with pytest.raises(ValueError, match=r"Incorrect number of array dimensions"):
         check_array_ndim(np.ones((2, 3)), ndim=3)
 
 
@@ -56,7 +56,7 @@ def test_check_label_type_valid(label_type: str) -> None:
 
 
 def test_check_label_type_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'label_type': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'label_type': incorrect"):
         check_label_type("incorrect")
 
 
@@ -71,7 +71,7 @@ def test_check_nan_policy_valid(nan_policy: str) -> None:
 
 
 def test_check_nan_policy_incorrect() -> None:
-    with pytest.raises(ValueError, match="Incorrect 'nan_policy': incorrect"):
+    with pytest.raises(ValueError, match=r"Incorrect 'nan_policy': incorrect"):
         check_nan_policy("incorrect")
 
 
@@ -85,17 +85,17 @@ def test_check_nan_pred_no_nan() -> None:
 
 
 def test_check_nan_pred_y_true_nan() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(RuntimeError, match=r"'y_true' contains at least one NaN value"):
         check_nan_pred(y_true=np.array([1, 0, 0, 1, np.nan]), y_pred=np.array([0, 1, 0, 1, 1]))
 
 
 def test_check_nan_pred_y_pred_nan() -> None:
-    with pytest.raises(RuntimeError, match="'y_pred' contains at least one NaN value"):
+    with pytest.raises(RuntimeError, match=r"'y_pred' contains at least one NaN value"):
         check_nan_pred(y_true=np.array([1, 0, 0, 1, 1]), y_pred=np.array([0, 1, 0, np.nan, 1]))
 
 
 def test_check_nan_pred_both_nan() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' contains at least one NaN value"):
+    with pytest.raises(RuntimeError, match=r"'y_true' contains at least one NaN value"):
         check_nan_pred(y_true=np.array([1, 0, 0, 1, np.nan]), y_pred=np.array([0, 1, np.nan, 1, 1]))
 
 
@@ -113,7 +113,7 @@ def test_check_same_shape_2_arrays_correct() -> None:
 
 
 def test_check_same_shape_2_arrays_incorrect() -> None:
-    with pytest.raises(RuntimeError, match="arrays have different shapes"):
+    with pytest.raises(RuntimeError, match=r"arrays have different shapes"):
         check_same_shape([np.array([1, 0, 0, 1, 1]), np.array([1, 0, 0, 1])])
 
 
@@ -124,7 +124,7 @@ def test_check_same_shape_3_arrays_correct() -> None:
 
 
 def test_check_same_shape_3_arrays_incorrect() -> None:
-    with pytest.raises(RuntimeError, match="arrays have different shapes"):
+    with pytest.raises(RuntimeError, match=r"arrays have different shapes"):
         check_same_shape(
             [np.array([1, 0, 0, 1, 1]), np.array([1, 2, 3, 4]), np.array([6, 5, 4, 3, 2, 1])]
         )
@@ -146,7 +146,7 @@ def test_check_same_shape_pred_2d() -> None:
 
 
 def test_check_same_shape_pred_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_pred' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_pred' have different shapes"):
         check_same_shape_pred(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_pred=np.array([0, 1, 0, 1, 1, 0]),
@@ -169,7 +169,7 @@ def test_check_same_shape_score_2d() -> None:
 
 
 def test_check_same_shape_score_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_score' have different shapes"):
         check_same_shape_score(
             y_true=np.array([1, 0, 0, 1, 1]),
             y_score=np.array([0, 1, 0, 1, 1, 0]),
@@ -195,12 +195,12 @@ def test_contains_nan_propagate() -> None:
 
 
 def test_contains_nan_raise() -> None:
-    with pytest.raises(ValueError, match="input array contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"input array contains at least one NaN value"):
         contains_nan(np.array([1, 2, 3, 4, np.nan]), nan_policy="raise")
 
 
 def test_contains_nan_raise_name() -> None:
-    with pytest.raises(ValueError, match="'x' contains at least one NaN value"):
+    with pytest.raises(ValueError, match=r"'x' contains at least one NaN value"):
         contains_nan(np.array([1, 2, 3, 4, np.nan]), nan_policy="raise", name="'x'")
 
 
@@ -242,7 +242,7 @@ def test_multi_isnan_3_arrays() -> None:
 
 
 def test_multi_isnan_empty() -> None:
-    with pytest.raises(RuntimeError, match="'arrays' cannot be empty"):
+    with pytest.raises(RuntimeError, match=r"'arrays' cannot be empty"):
         multi_isnan([])
 
 
@@ -306,7 +306,7 @@ def test_preprocess_pred_remove_y_pred_nan() -> None:
 
 
 def test_preprocess_pred_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_pred' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_pred' have different shapes"):
         preprocess_pred(y_true=np.array([1, 0, 0, 1, 1]), y_pred=np.array([0, 1, 0, 1, 1, 0]))
 
 
@@ -479,7 +479,7 @@ def test_preprocess_pred_multilabel_empty() -> None:
 
 
 def test_preprocess_pred_multilabel_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_pred' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_pred' have different shapes"):
         preprocess_pred_multilabel(
             y_true=np.array([1, 0, 0, 1, 1]), y_pred=np.array([0, 1, 0, 1, 1, 0])
         )
@@ -487,7 +487,7 @@ def test_preprocess_pred_multilabel_incorrect_shapes() -> None:
 
 def test_preprocess_pred_multilabel_incorrect_ndim_y_true() -> None:
     with pytest.raises(
-        RuntimeError, match="'y_true' must be a 1d or 2d array but received an array of shape"
+        RuntimeError, match=r"'y_true' must be a 1d or 2d array but received an array of shape"
     ):
         preprocess_pred_multilabel(y_true=np.ones((5, 3, 1)), y_pred=np.ones((5, 3)))
 
@@ -568,7 +568,7 @@ def test_preprocess_same_shape_arrays_drop_nan_3_arrays() -> None:
 
 
 def test_preprocess_same_shape_arrays_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="arrays have different shapes"):
+    with pytest.raises(RuntimeError, match=r"arrays have different shapes"):
         preprocess_same_shape_arrays([np.array([1, 0, 0, 1, 1]), np.array([1, 2, 3, 4])])
 
 
@@ -653,7 +653,7 @@ def test_preprocess_score_binary_size_0() -> None:
 
 
 def test_preprocess_score_binary_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_score' have different shapes"):
         preprocess_score_binary(
             y_true=np.array([1, 0, 0, 1, 1]), y_score=np.array([0, 1, 0, 1, 1, 0])
         )
@@ -858,7 +858,9 @@ def test_preprocess_score_multiclass_empty() -> None:
 
 
 def test_preprocess_score_multiclass_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different first dimension"):
+    with pytest.raises(
+        RuntimeError, match=r"'y_true' and 'y_score' have different first dimension"
+    ):
         preprocess_score_multiclass(
             y_true=np.array([1, 0, 0, 1, 1]), y_score=np.array([0, 1, 0, 1, 1, 0])
         )
@@ -871,7 +873,7 @@ def test_preprocess_score_multiclass_incorrect_ndim_y_true() -> None:
 
 def test_preprocess_score_multiclass_incorrect_ndim_y_score() -> None:
     with pytest.raises(
-        RuntimeError, match="'y_score' must be a 2d array but received an array of shape"
+        RuntimeError, match=r"'y_score' must be a 2d array but received an array of shape"
     ):
         preprocess_score_multiclass(y_true=np.ones((5,)), y_score=np.ones((5,)))
 
@@ -985,7 +987,7 @@ def test_preprocess_score_multilabel_empty() -> None:
 
 
 def test_preprocess_score_multilabel_incorrect_shapes() -> None:
-    with pytest.raises(RuntimeError, match="'y_true' and 'y_score' have different shapes"):
+    with pytest.raises(RuntimeError, match=r"'y_true' and 'y_score' have different shapes"):
         preprocess_score_multilabel(
             y_true=np.array([1, 0, 0, 1, 1]), y_score=np.array([0, 1, 0, 1, 1, 0])
         )
@@ -993,6 +995,6 @@ def test_preprocess_score_multilabel_incorrect_shapes() -> None:
 
 def test_preprocess_score_multilabel_incorrect_ndim_y_true() -> None:
     with pytest.raises(
-        RuntimeError, match="'y_true' must be a 1d or 2d array but received an array of shape"
+        RuntimeError, match=r"'y_true' must be a 1d or 2d array but received an array of shape"
     ):
         preprocess_score_multilabel(y_true=np.ones((5, 3, 1)), y_score=np.ones((5, 3)))
