@@ -1083,14 +1083,14 @@ wheels = [
 
 [[package]]
 name = "objectory"
-version = "0.2.0"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "tornado" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/60/15b30e3cdc71bfe565e32818b8a6b09a442f1d5107ee9887b6413f399dca/objectory-0.2.0.tar.gz", hash = "sha256:c47d447cc4b34d292ce4dd967bdad94554e5cac12940dfd808713f0f41a9fb6e", size = 15937, upload-time = "2024-10-11T15:12:54.652Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/3c/ae/acc4e91316c1fd0a4c22115d1bfeeee3ddde7e8b9c4495dc37e149e3bcbc/objectory-0.2.1.tar.gz", hash = "sha256:11ecf5e654eed913dcfa8f8c43717728f4e9c81664a1dc5aa9e9f418aac21b2d", size = 15507, upload-time = "2025-10-24T03:00:10.19Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f8/4a/ba733aa2e42a3e1d1903116904b365586798f5d12b4595dc1170a8ff3432/objectory-0.2.0-py3-none-any.whl", hash = "sha256:4da872ccc9768fe61bd14d37189a850a2524b19ebc3d33b71aa0c7b3423481e8", size = 17734, upload-time = "2024-10-11T15:12:53.322Z" },
+    { url = "https://files.pythonhosted.org/packages/82/4d/6615089a162676d088929b03380e10bb0b2be16fc8a46ce68743ffd501b8/objectory-0.2.1-py3-none-any.whl", hash = "sha256:eceb7c12df39bdfe9e9cf95ea52217ae6eb3888889e859c6dff58e481ca318f8", size = 17702, upload-time = "2025-10-24T03:00:08.908Z" },
 ]
 
 [[package]]
