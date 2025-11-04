@@ -662,14 +662,14 @@ wheels = [
 
 [[package]]
 name = "hya"
-version = "0.3.0"
+version = "0.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "omegaconf" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/20/c4/e90bde43dcf756bea3b9c1dfa6da03b458c003b880f3772100a38e4c61e8/hya-0.3.0.tar.gz", hash = "sha256:698b653329d4314dd0c633aefac906344fe4c85044982bc893f083c58532b3ea", size = 11737, upload-time = "2025-08-08T07:09:37.87Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a3/ef/200341dd606ddf0ffe6c074abbdbfcd6e380b101d078182a07448c251521/hya-0.3.1.tar.gz", hash = "sha256:d900cd954aa5174d1e11c3afe5ec51cb6345cdf741901b94f468611a7958835e", size = 11768, upload-time = "2025-11-01T04:44:52.14Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/a7/94ebe43928b041a54169a3079ab7a4878ff0d9f27506382d2ada959c3947/hya-0.3.0-py3-none-any.whl", hash = "sha256:6108425b1d94b215795369c31fdc7ab07669c4913e971687694d5a3452bc0258", size = 10548, upload-time = "2025-08-08T07:09:36.626Z" },
+    { url = "https://files.pythonhosted.org/packages/e7/b5/e604de35dc4fb8722e1b06033a575a9b4398ed0e7a45e8d5866290db7243/hya-0.3.1-py3-none-any.whl", hash = "sha256:0713eacb4ec24d9d1dfdcead0cdc347f93a214ed6ac3e617c0b1b2aedbc29847", size = 10596, upload-time = "2025-11-01T04:44:50.979Z" },
 ]
 
 [[package]]
