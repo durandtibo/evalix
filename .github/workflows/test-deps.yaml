@@ -7,257 +7,80 @@ permissions:
   contents: read
 
 jobs:
+  get-versions:
+    uses: ./.github/workflows/get-versions.yaml
 
   coola:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      max-parallel: 8
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-        coola-version: [ 0.8.7 ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-          activate-environment: true
-
-      - name: Install invoke
-        run: |
-          make install-invoke
-
-      - name: Install packages
-        run: |
-          inv install --all-deps
-
-      - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.1
-        with:
-          package-name: 'coola'
-          package-version: ${{ matrix.coola-version }}
-          python-version: ${{ matrix.python-version }}
-
-      - name: Show python config
-        run: |
-          inv show-python-config
-
-      - name: Show installed packages
-        run: |
-          inv show-installed-packages
-
-      - name: Run unit tests
-        run: |
-          inv unit-test
-
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: coola
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).coola) }}
 
   matplotlib:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      max-parallel: 8
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-        matplotlib-version: [ 3.10.1, 3.9.2, 3.8.4, 3.8.0 ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-          activate-environment: true
-
-      - name: Install invoke
-        run: |
-          make install-invoke
-
-      - name: Install packages
-        run: |
-          inv install --all-deps
-
-      - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.1
-        with:
-          package-name: 'matplotlib'
-          package-version: ${{ matrix.matplotlib-version }}
-          python-version: ${{ matrix.python-version }}
-
-      - name: Show python config
-        run: |
-          inv show-python-config
-
-      - name: Show installed packages
-        run: |
-          inv show-installed-packages
-
-      - name: Run unit tests
-        run: |
-          inv unit-test
-
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: matplotlib
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).matplotlib) }}
 
   numpy:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      max-parallel: 8
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-        numpy-version: [
-          2.2.5,
-          2.1.3,
-          2.0.2,
-          2.0.0,
-        ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-          activate-environment: true
-
-      - name: Install invoke
-        run: |
-          make install-invoke
-
-      - name: Install packages
-        run: |
-          inv install --all-deps
-
-      - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.1
-        with:
-          package-name: 'numpy'
-          package-version: ${{ matrix.numpy-version }}
-          python-version: ${{ matrix.python-version }}
-
-      - name: Show python config
-        run: |
-          inv show-python-config
-
-      - name: Show installed packages
-        run: |
-          inv show-installed-packages
-
-      - name: Run unit tests
-        run: |
-          inv unit-test
-
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: numpy
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).numpy) }}
 
   scikit-learn:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      max-parallel: 8
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-        scikit-learn-version: [ 1.6.1, 1.5.2, 1.5.0 ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-          activate-environment: true
-
-      - name: Install invoke
-        run: |
-          make install-invoke
-
-      - name: Install packages
-        run: |
-          inv install --all-deps
-
-      - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.1
-        with:
-          package-name: 'scikit-learn'
-          package-version: ${{ matrix.scikit-learn-version }}
-          python-version: ${{ matrix.python-version }}
-
-      - name: Show python config
-        run: |
-          inv show-python-config
-
-      - name: Show installed packages
-        run: |
-          inv show-installed-packages
-
-      - name: Run unit tests
-        run: |
-          inv unit-test
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: scikit-learn
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).scikit-learn) }}
 
 
   #################################
   #     Optional dependencies     #
   #################################
 
-
   objectory:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      max-parallel: 8
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '3.13', '3.12', '3.11', '3.10' ]
-        objectory-version: [ 0.2.0 ]
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: objectory
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).objectory) }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
+  hydra-core:
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: hydra-core
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).hydra-core) }}
 
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-          activate-environment: true
+  hya:
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: hya
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).hya) }}
 
-      - name: Install invoke
-        run: |
-          make install-invoke
+  markdown:
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: markdown
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).markdown) }}
 
-      - name: Install packages
-        run: |
-          inv install --all-deps
+  scipy:
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: scipy
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).scipy) }}
 
-      - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.1
-        with:
-          package-name: 'objectory'
-          package-version: ${{ matrix.objectory-version }}
-          python-version: ${{ matrix.python-version }}
-
-      - name: Show python config
-        run: |
-          inv show-python-config
-
-      - name: Show installed packages
-        run: |
-          inv show-installed-packages
-
-      - name: Run unit tests
-        run: |
-          inv unit-test
+  tqdm:
+    needs: get-versions
+    uses: ./.github/workflows/test-code-dep.yaml
+    with:
+      package-name: tqdm
+      package-versions: ${{ toJson(fromJson(needs.get-versions.outputs.package_versions).tqdm) }}
