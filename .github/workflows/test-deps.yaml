@@ -38,7 +38,7 @@ jobs:
           inv install --all-deps
 
       - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.0
+        uses: durandtibo/pip-install-package-action@v0.4.1
         with:
           package-name: 'coola'
           package-version: ${{ matrix.coola-version }}
@@ -87,7 +87,7 @@ jobs:
           inv install --all-deps
 
       - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.0
+        uses: durandtibo/pip-install-package-action@v0.4.1
         with:
           package-name: 'matplotlib'
           package-version: ${{ matrix.matplotlib-version }}
@@ -141,7 +141,7 @@ jobs:
           inv install --all-deps
 
       - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.0
+        uses: durandtibo/pip-install-package-action@v0.4.1
         with:
           package-name: 'numpy'
           package-version: ${{ matrix.numpy-version }}
@@ -190,7 +190,7 @@ jobs:
           inv install --all-deps
 
       - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.0
+        uses: durandtibo/pip-install-package-action@v0.4.1
         with:
           package-name: 'scikit-learn'
           package-version: ${{ matrix.scikit-learn-version }}
@@ -244,7 +244,7 @@ jobs:
           inv install --all-deps
 
       - name: Install valid package version
-        uses: durandtibo/pip-install-package-action@v0.4.0
+        uses: durandtibo/pip-install-package-action@v0.4.1
         with:
           package-name: 'objectory'
           package-version: ${{ matrix.objectory-version }}
