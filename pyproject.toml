@@ -46,7 +46,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-objectory = ["objectory >=0.2,<1.0", ]
+objectory = ["objectory >=0.2.1,<1.0", ]
 hydra = [
     "colorlog >=6.7,<7.0",
     "hya >=0.2,<1.0",
