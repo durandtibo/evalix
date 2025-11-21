@@ -25,7 +25,7 @@ def get_package_versions() -> dict[str, list[str]]:
         "scikit-learn": list(get_latest_minor_versions("scikit-learn", lower="1.5")),
         # Optional dependencies
         "colorlog": list(get_latest_minor_versions("colorlog", lower="6.7")),
-        "hya": list(get_versions("hya", lower="0.2.1")),
+        "hya": list(get_versions("hya", lower="0.3.1")),
         "hydra-core": list(get_latest_minor_versions("hydra-core", lower="1.3")),
         "markdown": list(get_latest_minor_versions("markdown", lower="3.4")),
         "objectory": list(get_versions("objectory", lower="0.2.1")),
