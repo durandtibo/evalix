@@ -55,7 +55,7 @@ hydra = [
 ]
 markdown = ["markdown >=3.4,<4.0"]
 scipy = ["scipy >=1.10,<2.0"]
-tqdm = ["tqdm >=4.65,<5.0"]
+tqdm = ["tqdm>=4.67.3,<5.0"]
 
 [dependency-groups]
 dev = [
